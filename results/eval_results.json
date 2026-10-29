@@ -1,0 +1,184 @@
+{
+  "n_questions": 12,
+  "retrieval_accuracy": 0.917,
+  "groundedness": 0.792,
+  "backend": "tfidf",
+  "rows": [
+    {
+      "question": "What are the five stages of this RAG pipeline, in order?",
+      "expected_source": "rag_basics.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "rag_basics.md",
+        "rag_basics.md",
+        "evaluation.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "5/5",
+      "groundedness": 1.0,
+      "answer": "[Extractive answer from rag_basics.md#0] Retrieval-Augmented Generation Basics Retrieval-Augmented Generation, or RAG, answers a question by first retrieving relevant documents and then generating an answer from that retrieved context, instead of relying only on what a language model memorised during training. This project follows five stages, in order: Query, Retrieval, Context, Generation, Evaluation. The Query is the user's question. Retrieval finds the most relevant chunks from the local document store. Context is the retrieved text passed to the model. Generation produces the answer from that context. Evaluation measures whether the answer was retrieved well and grounded in the context. The main benefit of RAG is grounding: an answer that cites retrieved documents is easier to check than an answer produced from memory alone. (Sources: rag_basics.md#0, rag_basics.md#1, evaluation.md#0)"
+    },
+    {
+      "question": "Why does RAG make an answer easier to check than answering from memory?",
+      "expected_source": "rag_basics.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "rag_basics.md",
+        "rag_basics.md",
+        "evaluation.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "1/2",
+      "groundedness": 0.5,
+      "answer": "[Extractive answer from rag_basics.md#1]  answer that cites retrieved documents is easier to check than an answer produced from memory alone. The main risk is the same as any pipeline: an error in an early stage, such as retrieving the wrong chunk, compounds into a wrong final answer. (Sources: rag_basics.md#1, rag_basics.md#0, evaluation.md#1)"
+    },
+    {
+      "question": "What is the main risk when an early RAG stage makes an error?",
+      "expected_source": "rag_basics.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "rag_basics.md",
+        "retrieval.md",
+        "rag_basics.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "2/2",
+      "groundedness": 1.0,
+      "answer": "[Extractive answer from rag_basics.md#1]  answer that cites retrieved documents is easier to check than an answer produced from memory alone. The main risk is the same as any pipeline: an error in an early stage, such as retrieving the wrong chunk, compounds into a wrong final answer. (Sources: rag_basics.md#1, retrieval.md#1, rag_basics.md#0)"
+    },
+    {
+      "question": "Why is a larger chunk not always better for retrieval?",
+      "expected_source": "chunking.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "chunking.md",
+        "chunking.md",
+        "evaluation.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "2/2",
+      "groundedness": 1.0,
+      "answer": "[Extractive answer from chunking.md#0] Chunking Trade-offs Chunking splits long documents into smaller pieces so a retriever can return the most relevant piece instead of a whole document. Two parameters matter most: chunk size and chunk overlap. A larger chunk preserves more surrounding context, but it dilutes relevance, because a chunk can contain several unrelated facts and the retriever cannot tell which part matched the query. A larger chunk also uses more of the model's context window, which increases cost and latency. A smaller chunk is more precise, but it can split a single fact across two chunks, so neither chunk alone answers the question. Overlap helps with that split-fact problem: each chunk repeats a small tail of the previous chunk, so a fact near a boundary still appears whole in at least one chunk. Overlap of a (Sources: chunking.md#0, chunking.md#1, evaluation.md#0)"
+    },
+    {
+      "question": "What problem does chunk overlap solve?",
+      "expected_source": "chunking.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "chunking.md",
+        "chunking.md",
+        "retrieval.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "2/2",
+      "groundedness": 1.0,
+      "answer": "[Extractive answer from chunking.md#0] Chunking Trade-offs Chunking splits long documents into smaller pieces so a retriever can return the most relevant piece instead of a whole document. Two parameters matter most: chunk size and chunk overlap. A larger chunk preserves more surrounding context, but it dilutes relevance, because a chunk can contain several unrelated facts and the retriever cannot tell which part matched the query. A larger chunk also uses more of the model's context window, which increases cost and latency. A smaller chunk is more precise, but it can split a single fact across two chunks, so neither chunk alone answers the question. Overlap helps with that split-fact problem: each chunk repeats a small tail of the previous chunk, so a fact near a boundary still appears whole in at least one chunk. Overlap of a (Sources: chunking.md#0, chunking.md#1, retrieval.md#0)"
+    },
+    {
+      "question": "What similarity measure is most common for embedding vectors, and what does it compare?",
+      "expected_source": "retrieval.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "retrieval.md",
+        "evaluation.md",
+        "local_llms.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "2/2",
+      "groundedness": 1.0,
+      "answer": "[Extractive answer from retrieval.md#0] Retrieval: Top-k, Similarity, and Reranking Retrieval ranks document chunks by similarity to the query. The most common similarity measure for embedding vectors is cosine similarity, which compares the direction of two vectors rather than their length. The retriever returns the top-k chunks, where k is a parameter: top-1 returns only the single best chunk, while top-3 or top-5 returns more context at the cost of more noise. Top-k is a trade-off. A small top-k keeps the context focused but risks missing the chunk that actually answers the question. A large top-k improves recall but can bury the relevant chunk among irrelevant ones, and the generator may then answer from the wrong chunk. Reranking is an optional second stage: a first retriever returns a broad candidate set, and a reranker sc (Sources: retrieval.md#0, evaluation.md#1, local_llms.md#0)"
+    },
+    {
+      "question": "What is the trade-off when choosing top-k for retrieval?",
+      "expected_source": "retrieval.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "retrieval.md",
+        "retrieval.md",
+        "local_llms.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "3/3",
+      "groundedness": 1.0,
+      "answer": "[Extractive answer from retrieval.md#0] Retrieval: Top-k, Similarity, and Reranking Retrieval ranks document chunks by similarity to the query. The most common similarity measure for embedding vectors is cosine similarity, which compares the direction of two vectors rather than their length. The retriever returns the top-k chunks, where k is a parameter: top-1 returns only the single best chunk, while top-3 or top-5 returns more context at the cost of more noise. Top-k is a trade-off. A small top-k keeps the context focused but risks missing the chunk that actually answers the question. A large top-k improves recall but can bury the relevant chunk among irrelevant ones, and the generator may then answer from the wrong chunk. Reranking is an optional second stage: a first retriever returns a broad candidate set, and a reranker sc (Sources: retrieval.md#0, retrieval.md#1, local_llms.md#0)"
+    },
+    {
+      "question": "What is reranking in a RAG system, and what does it cost?",
+      "expected_source": "retrieval.md",
+      "retrieved": false,
+      "retrieved_sources": [
+        "evaluation.md",
+        "rag_basics.md",
+        "local_llms.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "0/2",
+      "groundedness": 0.0,
+      "answer": "[Extractive answer from evaluation.md#0] Evaluating RAG: Retrieval Accuracy and Groundedness Two metrics are enough to start evaluating a RAG system honestly. Retrieval accuracy is the fraction of test questions where at least one retrieved chunk comes from the document that actually answers the question. Groundedness is the fraction of expected key facts that appear in the generated answer. A system can retrieve well and still fail on groundedness if the generator invents facts that were not in the retrieved context. An eval gate turns those metrics into a deploy rule. Before a change ships \u2014 a new prompt, a different chunk size, a new embedding model \u2014 the fixed test set is run and both metrics must meet their thresholds. If either metric falls below its threshold, the change does not ship until retrieval or grounding is fixed. (Sources: evaluation.md#0, rag_basics.md#0, local_llms.md#0)"
+    },
+    {
+      "question": "How are retrieval accuracy and groundedness defined in this project?",
+      "expected_source": "evaluation.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "evaluation.md",
+        "evaluation.md",
+        "retrieval.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "3/3",
+      "groundedness": 1.0,
+      "answer": "[Extractive answer from evaluation.md#0] Evaluating RAG: Retrieval Accuracy and Groundedness Two metrics are enough to start evaluating a RAG system honestly. Retrieval accuracy is the fraction of test questions where at least one retrieved chunk comes from the document that actually answers the question. Groundedness is the fraction of expected key facts that appear in the generated answer. A system can retrieve well and still fail on groundedness if the generator invents facts that were not in the retrieved context. An eval gate turns those metrics into a deploy rule. Before a change ships \u2014 a new prompt, a different chunk size, a new embedding model \u2014 the fixed test set is run and both metrics must meet their thresholds. If either metric falls below its threshold, the change does not ship until retrieval or grounding is fixed. (Sources: evaluation.md#0, evaluation.md#1, retrieval.md#1)"
+    },
+    {
+      "question": "What is an eval gate, and when should it block a change from shipping?",
+      "expected_source": "evaluation.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "local_llms.md",
+        "evaluation.md",
+        "evaluation.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "0/3",
+      "groundedness": 0.0,
+      "answer": "[Extractive answer from local_llms.md#1]  does most of the factual work, and the generator mainly needs to summarise the retrieved context faithfully. When no local model is running, this project falls back to a dependency-free TF-IDF retriever and an extractive answer, so the pipeline and its eval gate can still run and be measured. The fallback is labelled as extractive in the output, so it is never mistaken for a model-generated answer. (Sources: local_llms.md#1, evaluation.md#1, evaluation.md#0)"
+    },
+    {
+      "question": "What is prompt drift, and why does an eval gate catch it?",
+      "expected_source": "evaluation.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "evaluation.md",
+        "local_llms.md",
+        "evaluation.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "2/2",
+      "groundedness": 1.0,
+      "answer": "[Extractive answer from evaluation.md#1] er metric falls below its threshold, the change does not ship until retrieval or grounding is fixed. This is the same idea as a continuous integration test suite, applied to a language model system. A common failure mode is prompt drift: a small prompt tweak improves fluency but quietly drops groundedness, because the model starts answering from memory instead of from context. An eval gate catches that regression, because groundedness is measured on every run, not judged by reading a few outputs by eye. (Sources: evaluation.md#1, local_llms.md#1, evaluation.md#0)"
+    },
+    {
+      "question": "Which local models does this project use with Ollama, and what is the main cost advantage?",
+      "expected_source": "local_llms.md",
+      "retrieved": true,
+      "retrieved_sources": [
+        "local_llms.md",
+        "chunking.md",
+        "local_llms.md"
+      ],
+      "method": "extractive",
+      "key_facts_found": "3/3",
+      "groundedness": 1.0,
+      "answer": "[Extractive answer from local_llms.md#0] Running Language Models Locally with Ollama Ollama runs open language models on your own machine, so prompts and documents do not need to leave the local environment. A typical local setup uses Llama 3 for generation and a small embedding model such as nomic-embed-text for retrieval embeddings, both served by Ollama on localhost. The trade-offs of local models are cost, latency, and privacy against raw capability. Local models cost nothing per query beyond electricity and hardware, because there are zero paid APIs, and they keep data private, but they are generally smaller and slower per token than the largest hosted models. For a retrieval system, that trade-off is often worth it: retrieval does most of the factual work, and the generator mainly needs to summarise the retrieved context fa (Sources: local_llms.md#0, chunking.md#1, local_llms.md#1)"
+    }
+  ],
+  "top_k": 3,
+  "chunk_size": 800,
+  "overlap": 100,
+  "thresholds": {
+    "min_groundedness": 0.6,
+    "min_retrieval_accuracy": 0.7,
+    "note": "A change ships only if both metrics meet these thresholds on the fixed test set in test_set.json."
+  }
+}

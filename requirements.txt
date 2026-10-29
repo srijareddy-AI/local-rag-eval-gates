@@ -1,0 +1,6 @@
+# Runtime dependency for the Ollama (local) backend.
+requests>=2.31
+
+# Optional: install ChromaDB if you want a persistent vector store
+# instead of the built-in in-memory store. The pipeline runs without it.
+# chromadb>=0.5

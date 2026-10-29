@@ -1,0 +1,1 @@
+{"min_groundedness":0.6,"min_retrieval_accuracy":0.7,"note":"A change ships only if both metrics meet these thresholds on the fixed test set in test_set.json."}
